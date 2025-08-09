@@ -35,11 +35,24 @@ REQUIRED_CONFIRMATIONS=2
 
 ### 1. Deploy MultiSig Wallet
 
+source .env && forge script script/DeployAuctionUpgradeable.s.sol:DeployAuctionUpgradeable \
+    --rpc-url $RPC_URL \
+    --broadcast \
+    --verify
+```
+
 ```bash
 # Load environment variables and deploy
 source .env && forge script script/DeployMultiSig.s.sol:DeployMultiSig \
     --rpc-url $RPC_URL \
     --broadcast \
+    --etherscan-api-key $ETHERSCANAPI \
+    --verify
+
+source .env && forge script script/DeployAuctionUpgradeable.s.sol:DeployAuctionUpgradeable \
+    --rpc-url $RPC_URL \
+    --broadcast \
+    --etherscan-api-key $ETHERSCANAPI \
     --verify
 ```
 
